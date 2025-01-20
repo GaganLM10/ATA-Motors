@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 const Carousel = () => {
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const header = document.querySelector(".fixed-top");
+    if (header) {
+      // Update the height dynamically
+      setHeaderHeight(header.offsetHeight);
+    }
+
+    // Update on window resize
+    const handleResize = () => {
+      if (header) {
+        setHeaderHeight(header.offsetHeight);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const slides = [
+    {
+      image: '/images/hero3.png',
+      alt: 'Car 1',
+      title: 'Welcome to ATA Motors',
+      caption: 'Find your dream car with us!',
+    },
+    {
+      image: '/images/hero4.png',
+      alt: 'Car 2',
+      title: 'Wide Range of Used Cars',
+      caption: 'Quality cars at competitive prices!',
+    },
+    {
+      image: '/images/hero3.png',
+      alt: 'Car 3',
+      title: 'Apply for Financing',
+      caption: 'Easy financing options to own your car!',
+    },
+  ];
+
   return (
-    <section className="hero-section">
+    <section
+      className="hero-section"
+      style={{ marginTop: `${headerHeight}px` }}
+    >
       <div
         id="heroCarousel"
         className="carousel slide"
@@ -10,56 +56,26 @@ const Carousel = () => {
         style={{ height: '50vh', overflow: 'hidden' }}
       >
         <div className="carousel-inner h-100">
-          {/* Slide 1 */}
-          <div className="carousel-item active h-100">
-            <img
-              src="/images/hero3.png"
-              className="d-block w-100"
-              alt="Car 1"
-              style={{
-                height: '100%',
-                objectFit: 'cover', // Ensures image fits within the container without getting cut
-              }}
-            />
-            <div className="carousel-caption d-block">
-              <h5>Welcome to ATA Motors</h5>
-              <p>Find your dream car with us!</p>
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`carousel-item h-100 ${index === 0 ? 'active' : ''}`}
+            >
+              <img
+                src={slide.image}
+                className="d-block w-100"
+                alt={slide.alt}
+                style={{
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+              <div className="carousel-caption d-block">
+                <h5>{slide.title}</h5>
+                <p>{slide.caption}</p>
+              </div>
             </div>
-          </div>
-
-          {/* Slide 2 */}
-          <div className="carousel-item h-100">
-            <img
-              src="/images/hero4.png"
-              className="d-block w-100"
-              alt="Car 2"
-              style={{
-                height: '100%',
-                objectFit: 'cover', // Ensures image fits within the container without getting cut
-              }}
-            />
-            <div className="carousel-caption d-block">
-              <h5>Wide Range of Used Cars</h5>
-              <p>Quality cars at competitive prices!</p>
-            </div>
-          </div>
-
-          {/* Slide 3 */}
-          <div className="carousel-item h-100">
-            <img
-              src="/images/hero3.png"
-              className="d-block w-100"
-              alt="Car 3"
-              style={{
-                height: '100%',
-                objectFit: 'cover', // Ensures image fits within the container without getting cut
-              }}
-            />
-            <div className="carousel-caption d-block">
-              <h5>Apply for Financing</h5>
-              <p>Easy financing options to own your car!</p>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Controls */}
