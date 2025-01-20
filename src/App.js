@@ -14,6 +14,7 @@ import "./App.css";
 import "leaflet/dist/leaflet.css";
 import AboutUs from "./components/AboutUs";
 import SearchInventory from "./components/SeachInventory";
+import Introduction from "./components/Introduction";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           element={
             <>
               <Carousel />
+              <Introduction />
               <SearchInventory />
               <FeaturedProducts />
               <InfoSection />
