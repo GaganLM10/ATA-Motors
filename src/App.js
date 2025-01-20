@@ -15,6 +15,7 @@ import "leaflet/dist/leaflet.css";
 import AboutUs from "./components/AboutUs";
 import SearchInventory from "./components/SeachInventory";
 import Introduction from "./components/Introduction";
+import PaymentMethods from "./components/PaymentMethods";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <PopularBrands />
               <WhyChooseUs />
               <Testimonials />
+              <PaymentMethods />
               <MapComponent />
             </>
           }
