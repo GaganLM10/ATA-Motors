@@ -1,0 +1,14 @@
+.custom-bg {
+  background-color: #052574; /* Dark Blue-Violet */
+}
+.card {
+  border-radius: 10px;
+}
+.card-body i {
+  font-size: 2.5rem;
+}
+.nav-item.active {
+  font-weight: bold;
+  color: red;  /* Change color or add underline, etc. */
+  text-decoration: underline;
+}
