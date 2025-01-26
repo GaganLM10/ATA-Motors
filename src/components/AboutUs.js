@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="container py-5">
+    <div className="container">
       <div className="row">
         <div className="col-md-8 offset-md-2">
           <h2 className="text-center fw-bold mb-4">About Us</h2>

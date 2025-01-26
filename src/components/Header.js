@@ -226,7 +226,7 @@ const Header = () => {
           <button
             className={`btn ${
               isDarkMode ? "btn-light" : "btn-dark"
-            } ms-3 d-lg-none`}
+            } d-lg-none`}
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
           >

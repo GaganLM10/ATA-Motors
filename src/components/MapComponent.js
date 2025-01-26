@@ -50,7 +50,7 @@ const MapComponent = () => {
   }, []); // Empty dependency array to run this only once
 
   return (
-    <section className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
+    <section className={isDarkMode ? "bg-dark text-white" : "bg-light text-dark"}>
       <div className="container">
         <h2 className="text-center fw-bold mb-4">Find Us Here</h2>
         <div className="row justify-content-center">
