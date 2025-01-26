@@ -13,19 +13,19 @@ const FeaturedProducts = () => {
       id: 2,
       name: 'Toyota Corolla',
       image: '/images/featured/img2.jpg',
-      price: '$18,000',
+      price: '$30,000',
     },
     {
       id: 3,
       name: 'Honda Civic',
       image: '/images/featured/img3.webp',
-      price: '$22,500',
+      price: '$35,500',
     },
     {
       id: 4,
       name: 'Volvo X60',
       image: '/images/featured/img4.jpg',
-      price: '$19,500',
+      price: '$45,000',
     },
   ];
 
