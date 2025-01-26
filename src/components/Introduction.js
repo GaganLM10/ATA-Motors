@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 import { FaCar, FaFlag, FaHandshake, FaShieldAlt } from "react-icons/fa";
 
 const Introduction = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <section className="bg-dark text-light py-5">
+    <section className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
       <div className="container text-center">
         {/* Title Section */}
-        <h1 className="text-light fw-bold mb-4">
+        <h1 className="fw-bold mb-4">
           ATA MOTORS LTD
         </h1>
         <p className="text-muted fst-italic">

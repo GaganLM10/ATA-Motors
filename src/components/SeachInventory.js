@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaSearch, FaRedo } from "react-icons/fa";
+import { ThemeContext } from "./ThemeContext";
 
 const SearchInventory = () => {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [price, setPrice] = useState(50000);
+  const { isDarkMode } = useContext(ThemeContext);
 
   const brands = {
     Volkswagen: ["Golf", "Passat", "Tiguan"],
@@ -27,14 +29,20 @@ const SearchInventory = () => {
   };
 
   return (
-    <section className="bg-dark py-4">
+    <section className={`py-4 ${isDarkMode ? "bg-dark" : "bg-light"}`}>
       <div className="container">
-        <h2 className="text-white text-center mb-3"> <FaSearch className="me-2" />Search Inventory</h2>
-        <div className="d-flex flex-wrap align-items-center justify-content-center gap-3 p-3 bg-dark rounded">
+        <h2 className={`text-center mb-3 ${isDarkMode ? "text-white" : "text-dark"}`}>
+          <FaSearch className="me-2" />Search Inventory
+        </h2>
+        <div
+          className={`d-flex flex-wrap align-items-center justify-content-center gap-3 p-3 rounded ${
+            isDarkMode ? "bg-dark text-white" : "bg-light text-dark"
+          }`}
+        >
           {/* Brand Selector */}
           <div className="form-group mb-0">
             <select
-              className="form-select text-white bg-secondary border-secondary"
+              className={`form-select border-secondary ${isDarkMode ? "text-white bg-secondary" : "text-dark bg-white"}`}
               value={brand}
               onChange={(e) => {
                 setBrand(e.target.value);
@@ -53,7 +61,7 @@ const SearchInventory = () => {
           {/* Model Selector */}
           <div className="form-group mb-0">
             <select
-              className="form-select text-white bg-secondary border-secondary"
+              className={`form-select border-secondary ${isDarkMode ? "text-white bg-secondary" : "text-dark bg-white"}`}
               value={model}
               onChange={(e) => setModel(e.target.value)}
               disabled={!brand}
@@ -71,7 +79,7 @@ const SearchInventory = () => {
           {/* Price Selector */}
           <div className="form-group mb-0">
             <select
-              className="form-select text-white bg-secondary border-secondary"
+              className={`form-select border-secondary ${isDarkMode ? "text-white bg-secondary" : "text-dark bg-white"}`}
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             >

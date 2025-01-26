@@ -1,7 +1,18 @@
-import React from "react";
-import { FaPhoneAlt, FaMapMarkerAlt, FaCalendarAlt, FaFacebook, FaYoutube } from "react-icons/fa";
+import React, { useContext } from "react";
+import {
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+} from "react-icons/fa";
+import { ThemeContext } from "./ThemeContext";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Header = () => {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
   return (
     <header className="fixed-top">
       {/* Top bar */}
@@ -9,8 +20,9 @@ const Header = () => {
         <div className="container d-flex justify-content-between align-items-center">
           {/* For large screens */}
           <div className="d-flex align-items-center">
-            <FaPhoneAlt /> Your Contact Number &nbsp;
-            <FaMapMarkerAlt /> 58 Mary Street, Balsall Heath, Birmingham, England, B12 9ST
+            <FaPhoneAlt /> +1 123 456 7890 &nbsp;
+            <FaMapMarkerAlt /> 58 Mary Street, Balsall Heath, Birmingham,
+            England, B12 9ST
           </div>
           <div className="d-flex align-items-center">
             <FaCalendarAlt /> MON - SUN 09:30AM - 06:00PM &nbsp;
@@ -23,30 +35,31 @@ const Header = () => {
               <FaFacebook />
             </a>
             &nbsp;
-            <a
-              href="https://www.youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "inherit", textDecoration: "none" }}
-            >
-              <FaYoutube />
+            <a href="https://twitter.com" className="text-white">
+              <FaTwitter />
+            </a>
+            &nbsp;
+            <a href="https://instagram.com" className="text-white">
+              <FaInstagram />
             </a>
           </div>
         </div>
       </div>
 
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-black">
+      <nav
+        className={`navbar navbar-expand-lg ${
+          isDarkMode ? "navbar-dark bg-black" : "navbar-light bg-light"
+        }`}
+      >
         <div className="container">
           {/* Logo */}
           <a className="navbar-brand d-flex align-items-center" href="/">
             <img
-              src="/images/logo1.png"
+              src="/images/logo3.webp"
               alt="Logo"
-              className="me-2"
               style={{ width: "100px", height: "100px" }}
             />
-            <span className="fw-bold">ATA MOTORS</span>
           </a>
 
           {/* Navbar toggler (hamburger) */}
@@ -86,7 +99,10 @@ const Header = () => {
                 >
                   USED CARS
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="usedCarsDropdown">
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="usedCarsDropdown"
+                >
                   <li>
                     <a className="dropdown-item" href="/sedan">
                       Sedans
@@ -110,7 +126,10 @@ const Header = () => {
                 >
                   SERVICES
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="servicesDropdown">
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="servicesDropdown"
+                >
                   <li>
                     <a className="dropdown-item" href="/finance_form">
                       Finance Form
@@ -142,12 +161,13 @@ const Header = () => {
 
             {/* Contact info for mobile view inside the navbar */}
             <div className="navbar-nav ms-auto d-lg-none">
-              <div className="d-flex flex-column align-items-start text-white py-2">
+              <div className="d-flex flex-column align-items-start py-2">
                 <p>
                   <FaPhoneAlt /> Your Contact Number
                 </p>
                 <p>
-                  <FaMapMarkerAlt /> 58 Mary Street, Balsall Heath, Birmingham, England, B12 9ST
+                  <FaMapMarkerAlt /> 58 Mary Street, Balsall Heath, Birmingham,
+                  England, B12 9ST
                 </p>
                 <p>
                   <FaCalendarAlt /> MON - SUN 09:30AM - 06:00PM
@@ -163,12 +183,16 @@ const Header = () => {
                   </a>
                   &nbsp;
                   <a
-                    href="https://www.youtube.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "inherit", textDecoration: "none" }}
+                    href="https://twitter.com"
+                    className={isDarkMode ? "text-white" : "text-dark"}
                   >
-                    <FaYoutube />
+                    <FaTwitter />
+                  </a>
+                  <a
+                    href="https://instagram.com"
+                    className={isDarkMode ? "text-white" : "text-dark"}
+                  >
+                    <FaInstagram />
                   </a>
                 </div>
               </div>
@@ -186,6 +210,28 @@ const Header = () => {
                 }}
               />
             </div>
+
+            {/* Dark Mode Toggle Button */}
+            <button
+              className={`btn ${
+                isDarkMode ? "btn-light" : "btn-dark"
+              } ms-3 d-none d-lg-block`}
+              onClick={toggleTheme}
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <FaSun /> : <FaMoon />}
+            </button>
+
+            {/* Dark Mode Toggle Button for Mobile */}
+          <button
+            className={`btn ${
+              isDarkMode ? "btn-light" : "btn-dark"
+            } ms-3 d-lg-none`}
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+          </button>
           </div>
         </div>
       </nav>

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import MapComponent from "./MapComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ThemeContext } from "./ThemeContext";
 
 const ContactUs = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <section className="bg-dark py-5 text-white">
+    <section className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
       <div className="container my-5">
         <h1 className="text-center mb-4">Contact Us</h1>
         <form>

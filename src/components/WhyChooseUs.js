@@ -1,8 +1,11 @@
 import { FaAward, FaHeadset, FaTags, FaLeaf, FaMapMarkerAlt, FaPaintBrush } from "react-icons/fa";
+import React, { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 const WhyChooseUs = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <section className="bg-dark py-5 text-white">
+    <section className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
       <div className="container">
         <h2 className="text-center fw-bold mb-5">Why Choose ATA Motors?</h2>
         <div className="row">

@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 import { FaFacebookF, FaTwitter, FaInstagram, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <footer className="bg-dark text-white py-5">
+    <footer className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
       <div className="container">
         <div className="row">
           {/* Logo and Tagline */}
           <div className="col-md-4 mb-4">
             <div className="d-flex align-items-center">
               <img
-                src="/images/logo1.png"
+                src="/images/logo3.webp"
                 alt="ATA Motors Logo"
                 style={{ width: '60px', marginRight: '10px' }}
               />
@@ -26,22 +28,22 @@ const Footer = () => {
             <h5>Explore</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="/inventory" className="text-white">
+                <a href="/inventory" className={isDarkMode ? "text-white" : "text-dark"}>
                   View Inventory
                 </a>
               </li>
               <li>
-                <a href="/services" className="text-white">
+                <a href="/services" className={isDarkMode ? "text-white" : "text-dark"}>
                   Our Services
                 </a>
               </li>
               <li>
-                <a href="/contact" className="text-white">
+                <a href="/contact" className={isDarkMode ? "text-white" : "text-dark"}>
                   Contact Us
                 </a>
               </li>
               <li>
-                <a href="/faq" className="text-white">
+                <a href="/faq" className={isDarkMode ? "text-white" : "text-dark"}>
                   FAQs
                 </a>
               </li>
@@ -66,13 +68,13 @@ const Footer = () => {
         {/* Social Media Links */}
         <div className="text-center mt-4">
           <h6>Follow Us</h6>
-          <a href="https://facebook.com" className="text-white me-3">
+          <a href="https://facebook.com" className={isDarkMode ? "me-3 text-white" : "me-3 text-dark"}>
             <FaFacebookF />
           </a>
-          <a href="https://twitter.com" className="text-white me-3">
+          <a href="https://twitter.com" className={isDarkMode ? "me-3 text-white" : "me-3 text-dark"}>
             <FaTwitter />
           </a>
-          <a href="https://instagram.com" className="text-white">
+          <a href="https://instagram.com" className={isDarkMode ? "text-white" : "text-dark"}>
             <FaInstagram />
           </a>
         </div>

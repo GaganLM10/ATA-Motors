@@ -1,9 +1,11 @@
-import React from "react";
-import { FaCreditCard, FaPaypal, FaApplePay, FaCcMastercard, FaCcVisa, FaCcAmex } from "react-icons/fa";
+import React, { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
+import { FaCreditCard, FaPaypal, FaCcMastercard, FaCcVisa, FaCcAmex } from "react-icons/fa";
 
 const PaymentMethods = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <section className="bg-dark text-light py-5">
+    <section className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
       <div className="container">
         <h2 className="text-warning text-center mb-4">
           <FaCreditCard className="me-2" />

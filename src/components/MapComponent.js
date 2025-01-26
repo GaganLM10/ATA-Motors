@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
 
@@ -7,6 +8,7 @@ import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
 const MapComponent = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   useEffect(() => {
     // Coordinates for 58 Mary Street, Balsall Heath
     const latitude = 52.4585;
@@ -48,7 +50,7 @@ const MapComponent = () => {
   }, []); // Empty dependency array to run this only once
 
   return (
-    <section className="bg-dark py-5 text-white">
+    <section className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
       <div className="container">
         <h2 className="text-center fw-bold mb-4">Find Us Here</h2>
         <div className="row justify-content-center">

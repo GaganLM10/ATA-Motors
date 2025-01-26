@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 const FeaturedProducts = () => {
   const products = [
@@ -28,8 +29,10 @@ const FeaturedProducts = () => {
     },
   ];
 
+  const { isDarkMode } = useContext(ThemeContext);
+
   return (
-    <section className="bg-dark py-5 text-white">
+    <section className={isDarkMode ? "bg-dark text-white py-5" : "bg-light text-dark py-5"}>
       <div className="container">
         <h2 className="text-center mb-4">Featured Cars</h2>
         <div className="row">
